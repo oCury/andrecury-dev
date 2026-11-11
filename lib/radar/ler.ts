@@ -5,11 +5,13 @@ import { esquemaSemana, SEMANA_VALIDA, type Artigo, type SemanaDoRadar } from '.
 const PASTA_RADAR = path.join(process.cwd(), 'content', 'radar')
 const EXTENSAO = '.json'
 
+// turbopackIgnore: a pasta é parâmetro só para os testes; as páginas leem em tempo de build, e sem a marca
+// o Turbopack rastrearia o projeto inteiro para dentro do código de servidor.
 export function listarSemanas(pasta = PASTA_RADAR): string[] {
-  if (!fs.existsSync(pasta)) return []
-  const semanas = fs.readdirSync(pasta).filter((nome) => nome.endsWith(EXTENSAO)).map((nome) => nome.slice(0, -EXTENSAO.length))
+  if (!fs.existsSync(/* turbopackIgnore: true */ pasta)) return []
+  const semanas = fs.readdirSync(/* turbopackIgnore: true */ pasta).filter((nome) => nome.endsWith(EXTENSAO)).map((nome) => nome.slice(0, -EXTENSAO.length))
   const invalida = semanas.find((semana) => !SEMANA_VALIDA.test(semana))
-  if (invalida !== undefined) throw new Error(`${path.join(pasta, invalida)}${EXTENSAO}: o nome precisa ser AAAA-Www.json`)
+  if (invalida !== undefined) throw new Error(`${pasta}/${invalida}${EXTENSAO}: o nome precisa ser AAAA-Www.json`)
   return semanas.sort().reverse()
 }
 
