@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import { AREAS, SEMANA_VALIDA } from './esquema'
+import { AREAS, SEMANA_VALIDA } from './constantes'
 
 const DIAS_DA_SEMANA = 7
 const eAreaConhecida = (categoria: string): categoria is keyof typeof AREAS => Object.hasOwn(AREAS, categoria)

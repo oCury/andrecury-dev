@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { esquemaSemana, SEMANA_VALIDA, type Artigo, type SemanaDoRadar } from './esquema'
+import { SEMANA_VALIDA } from './constantes'
+import { esquemaSemana, type Artigo, type SemanaDoRadar } from './esquema'
 
 const PASTA_RADAR = path.join(process.cwd(), 'content', 'radar')
 const EXTENSAO = '.json'

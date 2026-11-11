@@ -1,7 +1,7 @@
 import { test } from '@playwright/test'
 
 const LARGURAS = [320, 768, 1024, 1440]
-const PAGINAS = { inicio: '/', blog: '/blog', post: '/blog/modelo-de-post', projetos: '/projetos', projeto: '/projetos/modelo-de-projeto', sobre: '/sobre' }
+const PAGINAS = { inicio: '/', blog: '/blog', post: '/blog/modelo-de-post', projetos: '/projetos', projeto: '/projetos/modelo-de-projeto', sobre: '/sobre', radar: '/radar', artigo: '/radar/artigo/2611.03233' }
 
 for (const tema of ['light', 'dark'] as const) {
   for (const largura of LARGURAS) {

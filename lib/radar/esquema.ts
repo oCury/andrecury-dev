@@ -1,12 +1,7 @@
 import { z } from 'zod'
+import { CHAVE_VALIDA, SEMANA_VALIDA } from './constantes'
 
-export const AREAS = {
-  agentes: 'Agentes', modelos: 'Modelos', avaliacao: 'Avaliação', sistemas: 'Sistemas',
-  engenharia: 'Engenharia', seguranca: 'Segurança', outros: 'Outros',
-} as const
-
-export const CHAVE_VALIDA = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/
-export const SEMANA_VALIDA = /^\d{4}-W\d{2}$/
+// Só servidor e testes importam valores daqui; código de cliente usa `import type` ou constantes.ts.
 
 // strictObject: campo a mais (como nota_caminho) derruba o build em vez de ir para o ar.
 export const esquemaArtigo = z.strictObject({

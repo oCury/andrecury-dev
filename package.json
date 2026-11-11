@@ -10,7 +10,7 @@
     "tipos": "tsc --noEmit",
     "test": "vitest run",
     "test:cobertura": "vitest run --coverage",
-    "e2e": "playwright test site",
+    "e2e": "playwright test site radar",
     "capturas": "playwright test capturas --project=webkit"
   },
   "dependencies": {

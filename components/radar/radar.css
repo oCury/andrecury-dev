@@ -190,4 +190,10 @@
   &.radar-artigo { max-width: 46rem; padding: 2rem var(--margem) 0; }
   &.radar-artigo .leitura { position: static; width: auto; max-height: none; overflow: visible; padding: 0; background: none; border: 0; box-shadow: none; transform: none; visibility: visible; }
   &.radar-artigo .leitura-titulo { font-size: clamp(2.1rem, 1.4rem + 3vw, 3.4rem); }
+  /* Tela estreita: os filtros já nascem recolhidos no HTML do servidor. O efeito em RadarSemana.tsx fecha os
+     <details> na hidratação (mesma largura de TELA_ESTREITA); sem esta regra a lista pulava (CLS 0,23 medido).
+     Sem JavaScript a regra não vale e os filtros ficam abertos. */
+  @media (max-width: 760px) and (scripting: enabled) {
+    &:not([data-pronto]) .grupo > :not(summary) { display: none; }
+  }
 }

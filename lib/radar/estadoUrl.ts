@@ -1,4 +1,4 @@
-import { CHAVE_VALIDA } from './esquema'
+import { CHAVE_VALIDA } from './constantes'
 import { ORDENS, type Filtros, type Ordem } from './filtro'
 
 export interface Estado extends Filtros {
