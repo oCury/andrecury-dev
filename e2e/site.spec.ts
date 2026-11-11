@@ -17,3 +17,14 @@ test('endereço que não existe responde 404 com a página do site', async ({ pa
   expect(resposta?.status()).toBe(404)
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Página não encontrada')
 })
+
+test('o blog lista os textos e abre um deles com data e corpo', async ({ page }) => {
+  await page.goto('/blog')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Blog')
+  await page.getByRole('link', { name: 'Modelo de post' }).click()
+  await expect(page).toHaveURL(/\/blog\/modelo-de-post$/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Modelo de post')
+  await expect(page.locator('time')).toHaveAttribute('datetime', '2026-11-11')
+  await expect(page.locator('.prosa')).toContainText('frontmatter')
+  await expect(page.locator('.prosa')).not.toContainText('titulo: Modelo de post')
+})
