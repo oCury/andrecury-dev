@@ -1,0 +1,193 @@
+.radar {
+/* Cabeçalho: capa de periódico. */
+.cabecalho {
+  padding: var(--margem) var(--margem) 1.1rem;
+  border-bottom: 3px double var(--tinta);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 0.2rem 2rem;
+}
+.cabecalho-rotulo { grid-column: 1 / -1; font-family: var(--mono); font-size: var(--texto-rotulo); letter-spacing: 0.14em; text-transform: uppercase; margin: 0; color: var(--tinta-suave); }
+.cabecalho-titulo { font-size: var(--texto-capa); font-weight: 600; line-height: 0.86; letter-spacing: -0.035em; margin: 0.14em 0 0; }
+.cabecalho-edicao { font-style: italic; font-weight: 400; color: var(--destaque); letter-spacing: -0.02em; }
+.cabecalho-funil { font-family: var(--mono); font-size: 0.8rem; text-align: right; margin: 0; color: var(--tinta-suave); max-width: 22rem; }
+.cabecalho-funil strong { color: var(--tinta); font-weight: 500; }
+
+.pagina {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr) minmax(0, 34rem);
+  align-items: start;
+}
+
+/* Filtros */
+.filtros { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; padding: 1.4rem 1.2rem 2rem var(--margem); display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.busca { display: grid; gap: 0.4rem; }
+.busca input, .ordem select {
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--tinta);
+  background: var(--papel-alto);
+  border: 1px solid var(--fio);
+  border-radius: 2px;
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+  transition: border-color var(--rapido);
+}
+.busca input:hover, .ordem select:hover { border-color: var(--tinta-suave); }
+.grupo summary { cursor: pointer; list-style: none; padding-bottom: 0.5rem; border-bottom: 1px solid var(--fio); margin-bottom: 0.5rem; }
+.grupo summary::-webkit-details-marker { display: none; }
+.pilha { display: grid; gap: 1px; }
+.nuvem { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.opcao {
+  font: inherit;
+  font-size: 0.95rem;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-left: 2px solid transparent;
+  padding: 0.28rem 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  transition: background-color var(--rapido), border-color var(--rapido);
+}
+.opcao:hover { background: var(--papel); }
+.opcao:active { background: var(--destaque-fundo); }
+.opcao[aria-pressed="true"], .opcao[aria-current="page"] { border-left-color: var(--destaque); background: var(--papel-alto); font-weight: 600; }
+.opcao .conta { margin-left: auto; font-family: var(--mono); font-size: 0.72rem; color: var(--tinta-suave); font-weight: 400; }
+.marca { width: 0.55rem; height: 0.55rem; background: var(--cat); flex: none; transform: translateY(-0.05em); }
+
+.etiqueta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--tinta-suave);
+  background: none;
+  border: 1px solid var(--fio);
+  border-radius: 999px;
+  padding: 0.16rem 0.55rem;
+  cursor: pointer;
+  transition: color var(--rapido), border-color var(--rapido), background-color var(--rapido);
+}
+.etiqueta:hover { color: var(--tinta); border-color: var(--tinta-suave); }
+.etiqueta:active { background: var(--destaque-fundo); }
+.etiqueta[aria-pressed="true"] { background: var(--tinta); border-color: var(--tinta); color: var(--papel); }
+
+
+/* Lista: a nota é o elemento de maior escala de cada item. */
+.lista { background: var(--papel); border-inline: 1px solid var(--fio); min-height: 100vh; }
+.lista-topo { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 1.4rem; border-bottom: 1px solid var(--fio); }
+.ordem { display: flex; align-items: center; gap: 0.6rem; }
+.ordem select { width: auto; padding-block: 0.3rem; }
+.artigos { list-style: none; margin: 0; padding: 0; }
+
+.item {
+  display: grid;
+  grid-template-columns: 4.2rem minmax(0, 1fr);
+  gap: 0.2rem 1rem;
+  width: 100%;
+  padding: 1.15rem 1.4rem 1.2rem;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--fio);
+  cursor: pointer;
+  position: relative;
+  transition: background-color var(--rapido);
+}
+.item::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--destaque); transform: scaleY(0); transform-origin: top; transition: transform var(--normal) var(--saida); }
+.item:hover { background: var(--papel-alto); }
+.item[aria-current="true"] { background: var(--papel-alto); }
+.item[aria-current="true"]::before { transform: scaleY(1); }
+.item-nota { grid-row: span 3; font-size: 2.5rem; line-height: 1; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums lining-nums; color: var(--cat); }
+.item-nota small { display: block; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; font-weight: 400; color: var(--tinta-suave); margin-top: 0.3rem; }
+.item-titulo { font-size: var(--texto-titulo); line-height: 1.18; font-weight: 600; letter-spacing: -0.012em; text-wrap: balance; }
+.item-frase { margin-top: 0.2rem; color: var(--tinta-suave); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.item-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--tinta-suave); margin-top: 0.45rem; display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; }
+.item-meta .area { color: var(--tinta); font-weight: 500; }
+.vazio { padding: 3rem 1.4rem; color: var(--tinta-suave); }
+.link { font: inherit; color: var(--destaque); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+
+/* Leitura */
+.leitura { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; padding: 1.6rem var(--margem) 3rem 2rem; }
+.leitura-vazia { color: var(--tinta-suave); font-style: italic; padding-top: 3rem; max-width: 22rem; }
+.leitura-fechar { display: none; }
+.leitura-area { font-family: var(--mono); font-size: var(--texto-rotulo); letter-spacing: 0.09em; text-transform: uppercase; color: var(--tinta-suave); margin: 0 0 0.6rem; }
+.leitura-titulo { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 0.6rem; text-wrap: balance; }
+.leitura-autores { font-size: 0.92rem; color: var(--tinta-suave); margin: 0 0 1.2rem; }
+.leitura-chamada { font-size: 1.22rem; line-height: 1.4; font-style: italic; margin: 0 0 1.4rem; padding-left: 1rem; border-left: 3px solid var(--cat); }
+.medidas { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--fio); margin: 0 0 1.6rem; }
+.medidas div { padding: 0.7rem 0.6rem 0.6rem 0; }
+.medidas div + div { padding-left: 0.8rem; border-left: 1px solid var(--fio); }
+.medidas dt { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinta-suave); }
+.medidas dd { margin: 0; font-size: 1.5rem; font-weight: 600; font-variant-numeric: tabular-nums lining-nums; letter-spacing: -0.02em; }
+.leitura-secao { font-family: var(--mono); font-size: var(--texto-rotulo); letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500; color: var(--tinta-suave); margin: 1.5rem 0 0.35rem; }
+.leitura p { margin: 0 0 0.8rem; }
+.leitura .nuvem { margin-top: 1.5rem; }
+.acoes { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem; }
+.botao {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: var(--papel);
+  background: var(--tinta);
+  border: 1px solid var(--tinta);
+  border-radius: 2px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  transition: transform var(--rapido), background-color var(--rapido), color var(--rapido);
+}
+.botao:hover { background: var(--destaque); border-color: var(--destaque); }
+.botao:active { transform: translateY(1px); }
+.botao.secundario { background: none; color: var(--tinta); }
+.botao.secundario:hover { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+
+.rodape { padding: 1rem var(--margem) 2rem; font-family: var(--mono); font-size: 0.75rem; color: var(--tinta-suave); border-top: 1px solid var(--fio); }
+.rodape p { margin: 0; }
+
+/* Largura média: a leitura vira um painel que desliza por cima da lista. */
+@media (max-width: 1180px) {
+  .pagina { grid-template-columns: 14rem minmax(0, 1fr); }
+  .leitura {
+    position: fixed; inset: 0 0 0 auto; width: min(36rem, 100%); max-height: none;
+    background: var(--papel-alto); border-left: 1px solid var(--tinta);
+    box-shadow: -1.5rem 0 3rem oklch(0% 0 0 / 0.14);
+    padding: 1.2rem 1.4rem 3rem;
+    transform: translateX(105%); visibility: hidden;
+    transition: transform var(--normal) var(--saida), visibility 0s var(--normal);
+    z-index: 5;
+  }
+  &[data-lendo="true"] .leitura { transform: none; visibility: visible; transition: transform var(--normal) var(--saida); }
+  .leitura-fechar { display: inline-block; margin-bottom: 1rem; }
+}
+
+@media (max-width: 760px) {
+  .cabecalho { grid-template-columns: 1fr; }
+  .cabecalho-funil { text-align: left; }
+  .pagina { grid-template-columns: minmax(0, 1fr); }
+  .filtros { position: static; max-height: none; padding: 1rem var(--margem); gap: 1rem; }
+  .lista { border-inline: 0; border-top: 1px solid var(--fio); }
+  .lista-topo, .item { padding-inline: var(--margem); }
+  .item { grid-template-columns: 3.2rem minmax(0, 1fr); gap: 0.2rem 0.7rem; }
+  .item-nota { font-size: 1.9rem; }
+  .rodape { display: none; }
+}
+}
+
+.radar {
+  .opcao, .item, .etiqueta { text-decoration: none; }
+  .etiqueta { display: inline-block; }
+  /* A cor da área sai do texto pequeno (contraste) e vai para um quadrado ao lado. */
+  .item-meta .area::before, .leitura-area::before { content: ""; display: inline-block; width: 0.55rem; height: 0.55rem; margin-right: 0.4rem; background: var(--cat); }
+  .leitura-aviso { font-family: var(--mono); font-size: 0.74rem; color: var(--tinta-suave); border-top: 1px solid var(--fio); padding-top: 0.7rem; margin-top: 1.5rem; }
+  /* Página própria do artigo: a leitura deixa de ser painel. */
+  &.radar-artigo { max-width: 46rem; padding: 2rem var(--margem) 0; }
+  &.radar-artigo .leitura { position: static; width: auto; max-height: none; overflow: visible; padding: 0; background: none; border: 0; box-shadow: none; transform: none; visibility: visible; }
+  &.radar-artigo .leitura-titulo { font-size: clamp(2.1rem, 1.4rem + 3vw, 3.4rem); }
+}
