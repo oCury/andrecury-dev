@@ -33,6 +33,11 @@ describe('listarPosts', () => {
     expect(listarPosts(pasta, true)).toHaveLength(1)
   })
 
+  it('recusa chave desconhecida, para um erro de digitação em rascunho não publicar o texto', () => {
+    const pasta = pastaCom({ 'quase.mdx': mdx('titulo: A\ndata: 2026-01-05\nresumo: r\nrascunhos: true') })
+    expect(() => listarPosts(pasta, false)).toThrow(/quase\.mdx[\s\S]*rascunhos/)
+  })
+
   it('falha citando o arquivo e o campo quando falta o título', () => {
     const pasta = pastaCom({ 'sem-titulo.mdx': mdx('data: 2026-01-05\nresumo: r') })
     expect(() => listarPosts(pasta, false)).toThrow(/sem-titulo\.mdx[\s\S]*titulo/)

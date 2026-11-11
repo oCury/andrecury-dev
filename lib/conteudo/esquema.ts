@@ -7,7 +7,7 @@ const dataIso = z.preprocess(
   z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'use AAAA-MM-DD'),
 )
 
-export const esquemaPost = z.object({
+export const esquemaPost = z.strictObject({
   titulo: texto,
   data: dataIso,
   resumo: texto,
@@ -17,7 +17,7 @@ export const esquemaPost = z.object({
 
 export const ESTADOS_DE_PROJETO = ['em uso', 'em construção', 'estudo', 'encerrado'] as const
 
-export const esquemaProjeto = z.object({
+export const esquemaProjeto = z.strictObject({
   titulo: texto,
   resumo: texto,
   ano: z.number().int().min(2000).max(2100),
