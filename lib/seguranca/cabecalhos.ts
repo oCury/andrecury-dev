@@ -5,7 +5,7 @@ export function montarCsp({ emDesenvolvimento }: { emDesenvolvimento: boolean })
   const diretivas: Array<[string, string[]]> = [
     ['default-src', ["'self'"]],
     ['script-src', ["'self'", "'unsafe-inline'", ORIGEM_GISCUS, ...(emDesenvolvimento ? ["'unsafe-eval'"] : [])]],
-    ['style-src', ["'self'", "'unsafe-inline'"]],
+    ['style-src', ["'self'", "'unsafe-inline'", ORIGEM_GISCUS]],
     ['img-src', ["'self'", 'data:']],
     ['font-src', ["'self'"]],
     ['connect-src', ["'self'", ...(emDesenvolvimento ? ['ws:'] : [])]],

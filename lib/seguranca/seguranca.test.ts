@@ -11,9 +11,11 @@ describe('montarCsp', () => {
     expect(csp).not.toContain('unsafe-eval')
   })
 
-  it('libera o giscus só em script e moldura', () => {
+  it('libera o giscus só em script, estilo e moldura', () => {
     const csp = montarCsp({ emDesenvolvimento: false })
     expect(csp).toMatch(/script-src [^;]*https:\/\/giscus\.app/)
+    // O client.js do giscus injeta a folha https://giscus.app/default.css, que dá largura ao quadro.
+    expect(csp).toMatch(/style-src [^;]*https:\/\/giscus\.app/)
     expect(csp).toMatch(/frame-src https:\/\/giscus\.app/)
     expect(csp).not.toMatch(/connect-src [^;]*giscus/)
   })

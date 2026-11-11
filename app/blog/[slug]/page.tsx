@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { Comentarios } from '@/components/comentarios/Comentarios'
 import { listarPosts } from '@/lib/conteudo/ler'
 import { dataPorExtenso } from '@/lib/datas'
 import { metadados } from '@/lib/metadados'
@@ -33,6 +34,7 @@ export default async function PaginaDoPost({ params }: Props) {
         <p className="artigo-resumo">{post.resumo}</p>
       </header>
       <div className="prosa"><Corpo /></div>
+      <Comentarios />
     </article>
   )
 }
