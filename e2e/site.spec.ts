@@ -39,3 +39,14 @@ test('projetos lista os projetos e abre a ficha de um deles', async ({ page }) =
   await expect(ficha).toContainText('2026')
   await expect(page.locator('.prosa')).toContainText('O problema')
 })
+
+test('o início mostra projetos e textos, e as páginas Sobre e Privacidade abrem', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('heading', { level: 2, name: 'Projetos' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 2, name: 'Blog' })).toBeVisible()
+  await page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('link', { name: 'Sobre' }).click()
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Sobre')
+  await page.getByRole('link', { name: 'Privacidade' }).click()
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Privacidade')
+  await expect(page.locator('.prosa')).toContainText('não usa cookies próprios')
+})
