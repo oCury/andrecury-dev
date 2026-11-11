@@ -25,8 +25,8 @@
 
 /* Índice: data ou estado à esquerda, título e resumo à direita */
 .indice { list-style: none; margin: 0; padding: 0; }
-.indice > li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0.2rem 1.5rem; padding: 1.3rem 0 1.4rem; border-bottom: 1px solid var(--fio); }
-.indice-meta { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinta-suave); margin: 0; padding-top: 0.45rem; }
+.indice > li { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 0.2rem 1.5rem; padding: 1.3rem 0 1.4rem; border-bottom: 1px solid var(--fio); }
+.indice-meta { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinta-suave); margin: 0; padding-top: 0.45rem; white-space: nowrap; }
 .indice h2, .indice h3 { font-size: var(--texto-titulo); line-height: 1.18; letter-spacing: -0.012em; margin: 0; text-wrap: balance; }
 .indice h2 a, .indice h3 a { text-decoration: none; transition: color var(--rapido); }
 .indice h2 a:hover, .indice h3 a:hover { color: var(--destaque); text-decoration: underline; text-underline-offset: 0.18em; }
@@ -61,7 +61,7 @@
 .prosa a { text-decoration-color: var(--destaque); text-decoration-thickness: 2px; text-underline-offset: 0.18em; transition: color var(--rapido); }
 .prosa a:hover { color: var(--destaque); }
 .prosa blockquote { margin-inline: 0; padding-left: 1rem; border-left: 3px solid var(--destaque); font-style: italic; font-size: 1.2rem; }
-.prosa code { font-family: var(--mono); font-size: 0.86em; background: var(--papel-alto); border: 1px solid var(--fio); border-radius: 2px; padding: 0.05em 0.3em; }
+.prosa code { font-family: var(--mono); font-size: 0.86em; background: var(--papel-alto); border: 1px solid var(--fio); border-radius: 2px; padding: 0.05em 0.3em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .prosa pre { overflow-x: auto; padding: 1rem 1.1rem; background: var(--papel-alto); border: 1px solid var(--fio); border-left: 3px solid var(--tinta); font-size: 0.86rem; line-height: 1.5; }
 .prosa pre code { background: none; border: 0; padding: 0; font-size: inherit; }
 .prosa img { max-width: 100%; height: auto; }
