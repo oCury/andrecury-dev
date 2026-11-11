@@ -23,7 +23,12 @@ function instantaneo(): Estado {
 
 function assinar(ouvinte: () => void) {
   ouvintes.add(ouvinte)
-  if (ouvintes.size === 1) window.addEventListener('popstate', lerDoEndereco)
+  if (ouvintes.size === 1) {
+    // Numa navegação de cliente o Next só troca o endereço depois de renderizar a página nova, então o
+    // instantâneo tirado na renderização ainda é do endereço antigo. Zerar aqui faz o React reler ao assinar.
+    atual = null
+    window.addEventListener('popstate', lerDoEndereco)
+  }
   return () => {
     ouvintes.delete(ouvinte)
     if (ouvintes.size > 0) return

@@ -98,6 +98,16 @@ test.describe('radar', () => {
     await expect(page).toHaveURL(/\/radar\/\d{4}-W\d{2}$/)
   })
 
+  test('chegar ao radar por um conceito da página do artigo já traz a lista filtrada', async ({ page }) => {
+    await abrirRadar(page)
+    const destino = await page.locator('.radar .item').first().getAttribute('href')
+    await page.goto(destino ?? '')
+    await page.locator('.radar-artigo a.etiqueta').first().click()
+    await expect(page.locator('.radar[data-pronto="true"]')).toBeVisible()
+    await expect(page.locator('.radar .filtros .etiqueta[aria-pressed="true"]')).toHaveCount(1)
+    await expect(page).toHaveURL(/conceito=/)
+  })
+
   test('nada local vai para o ar: sem caminho de pasta, sem Obsidian, sem fila sem resumo', async ({ page }) => {
     await abrirRadar(page)
     const html = await page.content()

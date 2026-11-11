@@ -18,7 +18,11 @@ interface Props {
 
 export function Filtros({ artigos, estado, semanaAtual, semanas }: Props) {
   const areas = contar(filtrar(artigos, estado, ['area']), (artigo) => [artigo.categoria])
-  const conceitos = contar(filtrar(artigos, estado, ['conceito']), (artigo) => artigo.conceitos).slice(0, CONCEITOS_VISIVEIS)
+  const todosOsConceitos = contar(filtrar(artigos, estado, ['conceito']), (artigo) => artigo.conceitos)
+  const maisFrequentes = todosOsConceitos.slice(0, CONCEITOS_VISIVEIS)
+  // O conceito ativo aparece sempre, mesmo fora dos mais frequentes: sem isso o filtro ficava ligado e invisível.
+  const ativo = todosOsConceitos.find(([conceito]) => conceito === estado.conceito)
+  const conceitos = ativo && !maisFrequentes.includes(ativo) ? [...maisFrequentes, ativo] : maisFrequentes
   return (
     <aside className="filtros" aria-label="Filtros">
       <label className="busca">
