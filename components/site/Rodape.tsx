@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { SITE } from '@/lib/site'
+import { Ruina } from './Ruina'
 
 export function Rodape() {
   return (
     <footer className="site-rodape">
+      <Ruina variante="rodape" />
       <p>{SITE.nome} · {new Date().getFullYear()}</p>
       <ul>
         <li><a href={SITE.urlInicial}>Contato e página inicial</a></li>

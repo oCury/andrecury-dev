@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef } from 'react'
+import { Ruina } from '@/components/site/Ruina'
 import type { SemanaDoRadar } from '@/lib/radar/esquema'
 import { filtrar, ordenar, ORDENS, type Ordem } from '@/lib/radar/filtro'
 import { partesDaSemana } from '@/lib/radar/formato'
@@ -61,6 +62,7 @@ export function RadarSemana({ edicao, semanas }: { edicao: SemanaDoRadar; semana
   return (
     <div ref={raiz} className="radar" data-lendo={aberto ? 'true' : undefined} data-pronto={hidratado ? 'true' : undefined}>
       <header className="cabecalho">
+        <Ruina variante="faixa" />
         <p className="cabecalho-rotulo">Leitura semanal · IA e tecnologia · {ano}</p>
         <h1 className="cabecalho-titulo">Radar <span className="cabecalho-edicao">nº {numero}</span></h1>
         <p className="cabecalho-funil">

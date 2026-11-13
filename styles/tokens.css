@@ -1,31 +1,36 @@
 :root {
-  --papel: oklch(96.5% 0.014 85);
-  --papel-fundo: oklch(93.5% 0.018 85);
-  --papel-alto: oklch(98.5% 0.008 85);
-  --tinta: oklch(23% 0.02 60);
-  --tinta-suave: oklch(46% 0.02 60);
-  --fio: oklch(84% 0.02 80);
-  --destaque: oklch(54% 0.19 32);
-  --destaque-fundo: oklch(92% 0.05 40);
-  --foco: oklch(52% 0.16 255);
+  /* Pedra fria: superfícies quase brancas com matiz azul; tinta azul-marinho. */
+  --papel: oklch(98.5% 0.005 240);
+  --papel-fundo: oklch(97% 0.008 240);
+  --papel-alto: oklch(99.7% 0.002 240);
+  --tinta: oklch(24% 0.04 255);
+  --tinta-suave: oklch(46% 0.035 255);
+  --fio: oklch(87% 0.018 245);
+  /* Azul: tudo que é interativo ou ativo. Musgo: só os cipós. */
+  --destaque: oklch(52% 0.17 250);
+  --destaque-fundo: oklch(92% 0.04 245);
+  --foco: oklch(52% 0.17 250);
+  --musgo: oklch(48% 0.09 150);
+  --sombra: oklch(24% 0.04 255 / 0.16);
 
-  --cat-agentes: oklch(54% 0.19 32);
-  --cat-modelos: oklch(50% 0.14 265);
-  --cat-avaliacao: oklch(55% 0.12 150);
-  --cat-sistemas: oklch(55% 0.11 215);
-  --cat-engenharia: oklch(60% 0.13 75);
-  --cat-seguranca: oklch(48% 0.15 330);
-  --cat-outros: oklch(55% 0.02 60);
+  --cat-agentes: oklch(52% 0.17 250);
+  --cat-modelos: oklch(50% 0.17 295);
+  --cat-avaliacao: oklch(50% 0.1 150);
+  --cat-sistemas: oklch(52% 0.085 205);
+  --cat-engenharia: oklch(52% 0.1 90);
+  --cat-seguranca: oklch(48% 0.14 345);
+  --cat-outros: oklch(52% 0.025 255);
 
-  --serifa: var(--fonte-serifa), "Iowan Old Style", Georgia, serif;
+  --sans: var(--fonte-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: var(--fonte-mono), ui-monospace, "SF Mono", Menlo, monospace;
 
   --texto-rotulo: 0.72rem;
-  --texto-base: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
-  --texto-titulo: clamp(1.2rem, 1.08rem + 0.5vw, 1.45rem);
-  --texto-capa: clamp(3.2rem, 1.6rem + 7vw, 7.5rem);
+  --texto-base: clamp(1rem, 0.96rem + 0.2vw, 1.06rem);
+  --texto-titulo: clamp(1.1rem, 1.02rem + 0.35vw, 1.28rem);
+  --texto-capa: clamp(2.75rem, 1.5rem + 6vw, 6.5rem);
 
   --margem: clamp(1rem, 0.5rem + 2.4vw, 3rem);
+  --raio: 4px;
   --rapido: 140ms;
   --normal: 280ms;
   --saida: cubic-bezier(0.16, 1, 0.3, 1);
@@ -33,22 +38,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --papel: oklch(20% 0.012 70);
-    --papel-fundo: oklch(16.5% 0.012 70);
-    --papel-alto: oklch(24% 0.014 70);
-    --tinta: oklch(92% 0.015 85);
-    --tinta-suave: oklch(70% 0.018 80);
-    --fio: oklch(34% 0.015 70);
-    --destaque: oklch(72% 0.16 40);
-    --destaque-fundo: oklch(30% 0.06 40);
-    --foco: oklch(76% 0.13 250);
-    --cat-agentes: oklch(72% 0.16 40);
-    --cat-modelos: oklch(74% 0.11 265);
-    --cat-avaliacao: oklch(76% 0.12 150);
-    --cat-sistemas: oklch(76% 0.1 215);
-    --cat-engenharia: oklch(80% 0.12 80);
-    --cat-seguranca: oklch(74% 0.13 330);
-    --cat-outros: oklch(70% 0.02 60);
+    /* Azul-noite, não preto neutro. */
+    --papel: oklch(19.5% 0.032 255);
+    --papel-fundo: oklch(17% 0.03 255);
+    --papel-alto: oklch(23% 0.035 255);
+    --tinta: oklch(93% 0.012 240);
+    --tinta-suave: oklch(72% 0.03 245);
+    --fio: oklch(32% 0.035 255);
+    --destaque: oklch(76% 0.13 235);
+    --destaque-fundo: oklch(30% 0.07 250);
+    --foco: oklch(80% 0.13 225);
+    --musgo: oklch(68% 0.1 150);
+    --sombra: oklch(8% 0.03 255 / 0.5);
+    --cat-agentes: oklch(76% 0.13 235);
+    --cat-modelos: oklch(76% 0.12 295);
+    --cat-avaliacao: oklch(78% 0.11 150);
+    --cat-sistemas: oklch(80% 0.09 205);
+    --cat-engenharia: oklch(80% 0.1 90);
+    --cat-seguranca: oklch(76% 0.12 345);
+    --cat-outros: oklch(72% 0.025 255);
   }
 }
 

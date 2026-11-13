@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { IndiceDePosts } from '@/components/conteudo/IndiceDePosts'
 import { IndiceDeProjetos } from '@/components/conteudo/IndiceDeProjetos'
+import { Ruina } from '@/components/site/Ruina'
 import { listarPosts, listarProjetos } from '@/lib/conteudo/ler'
 import { metadados } from '@/lib/metadados'
 import { partesDaSemana, rotuloDaArea, virgula } from '@/lib/radar/formato'
@@ -20,7 +21,8 @@ export default function PaginaInicial() {
     <>
       <header className="capa">
         <p className="capa-rotulo">Projetos · textos · radar de IA</p>
-        <h1 className="capa-titulo">André <em>Cury</em></h1>
+        <Ruina />
+        <h1 className="capa-titulo">André Cury</h1>
         <p className="capa-chamada">{SITE.descricao}</p>
       </header>
       <div className="inicio-secoes">
@@ -41,7 +43,7 @@ export default function PaginaInicial() {
         {edicao && (
           <section className="inicio-secao" aria-labelledby="inicio-radar">
             <div className="secao-topo">
-              <h2 id="inicio-radar">Radar <em>nº {partesDaSemana(edicao.semana).numero}</em></h2>
+              <h2 id="inicio-radar">Radar <span className="secao-numero">nº {partesDaSemana(edicao.semana).numero}</span></h2>
               <Link href="/radar">Abrir o radar</Link>
             </div>
             <ol className="indice indice--estreito">
