@@ -15,7 +15,7 @@ export const esquemaPost = z.strictObject({
   rascunho: z.boolean().default(false),
 })
 
-export const ESTADOS_DE_PROJETO = ['em uso', 'em construção', 'estudo', 'encerrado'] as const
+export const ESTADOS_DE_PROJETO = ['em uso', 'em desenvolvimento', 'estudo', 'encerrado'] as const
 
 const nomeDeArquivo = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'use minúsculas, números e hífens, sem caminho nem extensão')
 
