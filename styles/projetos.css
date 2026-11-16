@@ -1,0 +1,47 @@
+/* Projetos em destaque: faixas largas, uma por projeto, alternando o lado da imagem. Só tokens de tokens.css. */
+.destaques-secao { padding: 2.6rem 0 0; }
+.destaques-secao > h2 { font-size: 1.4rem; letter-spacing: -0.025em; margin: 0 var(--margem) 0; padding-bottom: 0.6rem; border-bottom: 1px solid var(--fio); }
+.destaques { list-style: none; margin: 0; padding: clamp(1.5rem, 1rem + 2vw, 2.5rem) var(--margem) 0; display: grid; gap: clamp(2.5rem, 2rem + 4vw, 5.5rem); }
+
+.faixa { position: relative; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(1.25rem, 3vw, 3rem); align-items: center; }
+.destaques > li:nth-child(even) .faixa { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+.destaques > li:nth-child(even) .faixa-imagem { order: 2; }
+
+/* Imagem: moldura fina e sombra. A sombra maior do hover é um pseudo-elemento que só muda de opacidade,
+   e a faixa sobe por transform, para o movimento ficar no compositor. */
+.faixa-imagem { position: relative; isolation: isolate; transition: transform var(--normal) var(--saida); }
+.faixa-imagem picture, .faixa-imagem img { display: block; }
+.faixa-imagem img { width: 100%; height: auto; border: 1px solid var(--fio); border-radius: var(--raio); box-shadow: 0 0.8rem 1.6rem -0.9rem var(--sombra); background: var(--papel-alto); }
+.faixa-imagem::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: var(--raio); box-shadow: 0 1.6rem 2.8rem -0.8rem var(--sombra); opacity: 0; transition: opacity var(--normal) var(--saida); }
+
+.faixa-meta { font-family: var(--mono); font-size: 0.78rem; color: var(--tinta-suave); margin: 0; }
+.faixa h3 { font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.25rem); line-height: 1.1; letter-spacing: -0.03em; margin: 0.3em 0 0.5em; text-wrap: balance; }
+/* O link do título cobre a faixa inteira: um só link para teclado e leitor de tela. */
+.faixa h3 a { color: inherit; text-decoration: none; }
+.faixa h3 a::after { content: ""; position: absolute; inset: 0; }
+.faixa-resumo { margin: 0 0 1rem; color: var(--tinta-suave); }
+.faixa-resultado { margin: 0 0 1rem; padding-left: 0.9rem; border-left: 2px solid var(--destaque); font-weight: 600; }
+.faixa-stack { margin: 0 0 1rem; font-family: var(--mono); font-size: 0.78rem; color: var(--tinta-suave); }
+.faixa-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 0; font-size: 0.92rem; font-weight: 500; }
+.faixa-ver { color: var(--destaque); transition: transform var(--rapido) var(--saida); }
+/* Links externos ficam acima do link esticado do título para continuarem clicáveis. */
+.faixa-links a { position: relative; z-index: 1; color: var(--destaque); text-decoration: none; }
+.faixa-links a:hover { text-decoration: underline; text-underline-offset: 0.18em; }
+.faixa:has(h3 a:focus-visible) { outline: 2px solid var(--foco); outline-offset: 0.6rem; border-radius: var(--raio); }
+.faixa h3 a:focus-visible { outline: 2px solid var(--foco); outline-offset: 3px; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .faixa:hover .faixa-imagem { transform: translateY(-4px); }
+  .faixa:hover .faixa-imagem::after { opacity: 1; }
+  .faixa:hover .faixa-ver { transform: translateX(3px); }
+}
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+  .faixa:hover .faixa-imagem::after { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .faixa, .destaques > li:nth-child(even) .faixa { grid-template-columns: minmax(0, 1fr); }
+  .destaques > li:nth-child(even) .faixa-imagem { order: 0; }
+}
+
+.outros-titulo { font-size: 1.4rem; letter-spacing: -0.025em; margin: 0 0 0.4rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--fio); }
