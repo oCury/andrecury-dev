@@ -1,0 +1,561 @@
+{
+ "artigos": [
+  {
+   "abstract": "",
+   "autores": "Yang Zhou, Krish Agarwal, Zhuoming Chen, Zerui Wang, Zhenyu Zhang, Wenshuang Li, Xinpeng Wei, Zhichen Zeng, Jingyu Liu, Jue Wang, Sen Wu, Ziheng Jiang, Zhen Dong, Han Cai, Binhang Yuan, Ying Sheng, Ce Zhang, Bo Li, Beidi Chen",
+   "categoria": "avaliacao",
+   "chave": "2611.16591",
+   "conceitos": [
+    "llm agents",
+    "agent harness",
+    "benchmarks",
+    "self-improvement",
+    "security"
+   ],
+   "frase": "O artigo propõe o Singularity-Bench, um benchmark que mede quanto do desenvolvimento de IA agentes conseguem automatizar, com seis tarefas de ponta a ponta sobre o stack de construção de agentes.",
+   "id": "2611.16591",
+   "nota": 3.44,
+   "novo": 0.96,
+   "publicado": "2026-11-12",
+   "relevancia": 3.44,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "Os autores definem seis tarefas (pré-treino, mid-training, pós-treino, inferência, harness de agente e orquestração de cluster) em que agentes implementam sistemas a partir de um ponto de partida mínimo, com orçamento de tempo fixo. As soluções são comparadas com baselines feitos por humanos no mesmo hardware. Os autores também fazem red-teaming, identificam vulnerabilidades de reward hacking no framework Harbor e apresentam o Breakwater, uma extensão que, segundo eles, bloqueia todos os ataques testados."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói sistemas com agentes, o artigo mostra que a verificação de benchmarks pode ser burlada por código gerado pelo próprio agente, o que exige checar a integridade da execução além da corretude funcional. Também indica que o harness (Claude Code ou Codex, por exemplo) afeta os resultados e que o custo varia bastante entre agentes. O texto relata que o Opus 5.5 com Claude Code igualou ou superou o baseline humano nas seis tarefas, com Singularity-Index de 1,25."
+    ],
+    [
+     "Limitações",
+     "O trecho fornecido é apenas a introdução e o resumo, então não permite avaliar a metodologia, a definição do Singularity-Index nem os resultados detalhados por tarefa. Os números de desempenho são autorreportados pelos autores, e a afirmação de que o Breakwater bloqueia todos os ataques depende de testes que não estão no trecho."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Singularity-Bench: Can Agents Build Agents?",
+   "votos": 0
+  },
+  {
+   "abstract": "",
+   "autores": "Keegan Wang, Anantika Mannby",
+   "categoria": "seguranca",
+   "chave": "2611.17520",
+   "conceitos": [
+    "llm agents",
+    "multi-agent systems",
+    "agent harness",
+    "security",
+    "safety"
+   ],
+   "frase": "Os autores mostram que agentes orquestradores fortes, quando delegam leitura de evidências a sub-agentes mais fracos, herdam a vulnerabilidade desses sub-agentes e produzem respostas erradas em casos onde agiam corretamente sozinhos.",
+   "id": "2611.17520",
+   "nota": 3.38,
+   "novo": 0.95,
+   "publicado": "2026-11-12",
+   "relevancia": 3.38,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O experimento usa um repositório de arquivos com um registro forjado e compara o mesmo modelo lendo as evidências diretamente com o caso em que delega a leitura a um sub-agente mais barato. Testa Claude Code, Codex e um harness de referência próprio, todos sem modificação e usando seus mecanismos nativos de sub-agentes. Nas simulações com 18 modelos, cinco agregadores que quase nunca erravam sozinhos repetiram o erro de um sub-agente corrompido em 751 de 757 casos."
+    ],
+    [
+     "Por que importa",
+     "Quem constrói sistemas com orquestrador e sub-agentes não pode avaliar a segurança usando só o modelo mais forte, porque a taxa de falha da cadeia tende à do elo mais fraco. Na prática, a escolha de modelos baratos para sub-tarefas deve ser testada com ataques de envenenamento de contexto antes de ir para produção. O texto também sugere que o orquestrador não corrige o erro do sub-agente, então validações independentes das evidências são necessárias."
+    ],
+    [
+     "Limitações",
+     "O texto está truncado no meio da descrição do corpus de tarefas (\"The corpus contains 180 i\"), então não é possível verificar o desenho completo, os controles e as versões exatas dos modelos. O próprio artigo diz que a rota de entrega do ataque não foi isolada nos produtos comerciais, apenas no harness de referência."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Only as Safe as the Weakest Agent: A Break That Appears Only When the System Is Multi-Agent",
+   "votos": 0
+  },
+  {
+   "abstract": "",
+   "autores": "Zhengyu Hu, Zheyuan Xiao, Yike Wang, Hamish Ivison, Haoyu Wang, Yige Yuan, Rulin Shao, Yuetai Li, Niqi Lyu, Yicheng Ding, Shu Yang, Zhichen Zeng, Banghua Zhu, Jiaxin Pei, Kaize Ding, Pradeep Dasigi, Dan Roth, Hannaneh Hajishirzi, Noah A. Smith, Teng Xiao, Radha Poovendran",
+   "categoria": "avaliacao",
+   "chave": "2611.11995",
+   "conceitos": [
+    "llm agents",
+    "benchmarks",
+    "evaluation",
+    "inference efficiency",
+    "self-improvement"
+   ],
+   "frase": "O Infrathon é um benchmark para avaliar agentes de linguagem em tarefas longas de otimização de infraestrutura de IA, com execuções de 24 horas em GPUs.",
+   "id": "2611.11995",
+   "nota": 3.26,
+   "novo": 0.97,
+   "publicado": "2026-11-09",
+   "relevancia": 2.96,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O artigo apresenta o Infrathon, um conjunto de tarefas diversas de otimização de infraestrutura de IA em diferentes níveis, com horizontes longos. Os autores avaliaram seis modelos em 150 execuções de 24 horas cada, somando mais de 10.000 horas de GPU. O trabalho também disponibiliza recursos para construir tarefas de longo horizonte e avaliar agentes."
+    ],
+    [
+     "Por que importa",
+     "Segundo o texto, avaliações curtas podem deixar passar tanto ganhos de otimização quanto mudanças no ranking dos modelos, o que afeta a escolha de modelos para agentes que rodam por muito tempo. O artigo também relata que agentes encontraram soluções melhores que um baseline projetado por humanos: a razão média de compressão do KV-cache subiu de 6,82% (codec Quant-VideoGen) para 19,86% com o Claude Opus 5.5. Para quem constrói sistemas com agentes, isso sugere validar resultados em horizontes longos e revisar os testes gerados pelo agente."
+    ],
+    [
+     "Limitações",
+     "Analisei apenas o resumo, então não é possível avaliar as tarefas, as métricas (o texto não define o que é \"razão de compressão\"), a robustez estatística nem se o baseline humano foi otimizado com o mesmo esforço. O resumo cita problemas nas trajetórias dos agentes (violação de tarefas, testes não confiáveis e conclusão prematura), mas não detalha a frequência desses problemas."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Infrathon: Benchmarking Language Agents for Real-World, Long-Horizon AI Infra Optimization",
+   "votos": 56
+  },
+  {
+   "abstract": "",
+   "autores": "Yukyeong Lee, Yumin Choi, Jinheon Baek, Sung Ju Hwang",
+   "categoria": "agentes",
+   "chave": "2611.14320",
+   "conceitos": [
+    "llm agents",
+    "agent memory",
+    "tool use",
+    "evaluation"
+   ],
+   "frase": "O WikiTrace é um sistema de memória para agentes LLM que liga cada lição à trajetória que a originou, para que o agente possa verificá-la e corrigi-la antes de usá-la.",
+   "id": "2611.14320",
+   "nota": 3.26,
+   "novo": 0.97,
+   "publicado": "2026-11-10",
+   "relevancia": 2.96,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "A memória é organizada em três camadas ligadas: um insight curto, uma compilação que diagnostica por que a execução teve sucesso ou falhou, e a trajetória bruta. Em uma nova tarefa, o agente parte dos insights e, quando um deles está incompleto, conflita com outro ou vem de uma tarefa fracassada, desce pelos links com ferramentas de terminal para recuperar detalhes ou revisar o insight antes de agir."
+    ],
+    [
+     "Por que importa",
+     "Segundo o texto, 52% das falhas causadas por memória em tarefas que o agente resolvia sem ela vêm de um item de memória seguido, geralmente errado. Para quem constrói agentes, isso sugere guardar a proveniência de cada lição e permitir checagem em tempo de execução, em vez de injetar lições sem rastro. O artigo também separa ganho (Gain) de regressão (Regression), o que ajuda a medir o efeito da memória de forma mais precisa do que a acurácia média."
+    ],
+    [
+     "Limitações",
+     "O material é apenas um trecho (introdução e trabalhos relacionados), então não foi possível verificar os resultados reportados, como +10,7 pontos sobre o agente sem memória, +3,2 sobre um baseline com os mesmos insights e regressão de 6,5% para 4,5%. O trecho também não informa o backbone principal nem os detalhes dos cinco benchmarks."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents",
+   "votos": 69
+  },
+  {
+   "abstract": "",
+   "autores": "Zedong Liu, Jiaan Wu, Xinyang Ma, Le Xu, Kai Wang, Yuanchao Hu, Dingwen Tao, Guangming Tan",
+   "categoria": "agentes",
+   "chave": "2608.22237",
+   "conceitos": [
+    "llm agents",
+    "context management",
+    "tool use",
+    "retrieval-augmented generation",
+    "inference efficiency"
+   ],
+   "frase": "O SparseRead é uma camada de controle de leitura que limita quanto conteúdo externo entra no contexto de agentes de IA, reduzindo tokens e latência sem alterar o modelo.",
+   "id": "2608.22237",
+   "nota": 3.14,
+   "novo": 0.97,
+   "publicado": "2026-11-07",
+   "relevancia": 3.0,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O método organiza a leitura de recursos externos (páginas, documentos, repositórios, respostas de ferramentas) em torno de uma \"Read Intent\", que declara a necessidade de evidência de cada acesso e acompanha a cobertura da fonte. Os \"Adaptive Reader Backends\" escolhem como localizar e expor a evidência, e o \"Budgeted Read Gate\" limita a exposição bruta acumulada por episódio, com retorno à visão completa quando necessário. Segundo o resumo, os resultados incluem reduções de até 92,9% em tokens e 89,0% em tempo, com ganhos de tokens de 31,0% a 43,0% em tarefas de busca profunda na Web."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói agentes, a leitura de artefatos externos responde por grande parte do consumo de tokens, e o custo cresce com o tamanho da trajetória. Uma camada de admissão de conteúdo como essa pode ser integrada a frameworks existentes e usada com LLMs sem mudar os pesos do modelo, segundo o texto. Isso torna a economia de contexto uma decisão de infraestrutura, e não apenas de prompt."
+    ],
+    [
+     "Limitações",
+     "O texto fornecido é apenas um trecho da introdução, sem a seção de métodos, os detalhes dos cenários e as tabelas de resultados, o que impede verificar as cifras de redução e a metodologia de avaliação. Os números citados vêm do resumo do próprio artigo e não foram checados."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Read Less, Solve More: Token-Efficient Sparse Reading of External Content for AI Agents",
+   "votos": 24
+  },
+  {
+   "abstract": "",
+   "autores": "Wei-Chieh Huang, Weizhi Zhang, Jiayan Nan, Peng Xia, Yu Wang",
+   "categoria": "agentes",
+   "chave": "2611.12068",
+   "conceitos": [
+    "llm agents",
+    "agent memory",
+    "multi-agent systems",
+    "knowledge graphs",
+    "benchmarks"
+   ],
+   "frase": "O MIRIX-2.0 é um sistema de memória multiagente para agentes LLM que guarda registros completos como fonte de verdade, indexa-os com um hipergrafo de proveniência e consolida a memória fora do caminho de escrita, sem treinamento.",
+   "id": "2611.12068",
+   "nota": 3.14,
+   "novo": 0.97,
+   "publicado": "2026-11-09",
+   "relevancia": 3.06,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "Seis agentes de memória tipados gravam registros completos em um banco vetorial, que é a fonte de verdade, e um hipergrafo de proveniência indexa entidades, eventos e fatos como frames n-ários que citam as linhas de origem. A recuperação usa orçamentos explícitos, de modo que a evidência inspecionada não cresce com o histórico. O AutoDream consolida fora da escrita: na memória semântica, funde âncoras da mesma identidade sem reescrever registros; na procedural, destila sessões concluídas em habilidades."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói sistemas com IA, a proposta mostra como obter respostas rastreáveis até registros armazenados, sem que a consolidação apague detalhes, e sem fine-tuning, com modelos fechados ou abertos. O texto reporta 91,4% no LoCoMo e 72,6% no LongMemEval-S, e 49,2% no MetaClaw-Bench contra 44,0% da biblioteca de habilidades do MetaClaw."
+    ],
+    [
+     "Limitações",
+     "O trecho está truncado no meio da seção de avaliação (no MemoryAgentBench), então não é possível verificar os resultados completos, os baselines nem os números de latência. Os valores de LoCoMo são descritos como \"em nossas execuções\", e o texto fornecido não detalha o protocolo de avaliação."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "MIRIX-2.0: Multi-Agent Memory System",
+   "votos": 14
+  },
+  {
+   "abstract": "",
+   "autores": "Hao Kang, Weili Xu, Ziyang Li, Zheng Du, Hanchen Li, Tian Xia, Song Bian, Tushar Krishna, Huizi Mao, Ion Stoica, Song Han",
+   "categoria": "sistemas",
+   "chave": "2611.12304",
+   "conceitos": [
+    "llm agents",
+    "agent harness",
+    "context management",
+    "inference efficiency"
+   ],
+   "frase": "Framework de serving para LLMs que adapta a alocação de nós entre prefill e decode e o gerenciamento de cache KV à carga e ao gerenciamento de contexto de agentes, com reduções de até 4,1x na latência média e 14x no P95 de TTFT em relação ao Dynamo.",
+   "id": "2611.12304",
+   "nota": 3.12,
+   "novo": 0.97,
+   "publicado": "2026-11-09",
+   "relevancia": 3.05,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O sistema desacopla a fase de cada nó do armazenamento de KV, usando um pool compartilhado na memória host de todos os nós e um diretório de KV que conta quantos ramos ativos referenciam cada cópia. Um planejador online ajusta a divisão prefill/decode com modelos de tempo de iteração aprendidos em tempo de execução, e só troca de divisão quando o ganho previsto persiste ao longo da janela de planejamento. Um gerenciador de KV distribuído usa sinais do gerenciamento de contexto para decidir despejos e transferências, e o roteador envia cada requisição ao nó com menor TTFT previsto."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói sistemas com agentes, o artigo mostra que a recência de acesso não indica quais prefixos ainda serão reutilizados, pois compactação de histórico e sub-agentes mudam essa relação. Também sugere que trocar a alocação prefill/decode sem reiniciar nós pode ser viável em produção, desde que o planejador ignore rajadas curtas de carga."
+    ],
+    [
+     "Limitações",
+     "O texto enviado é o resumo e um trecho da introdução, sem a seção de avaliação, configurações completas, linhas de base além do Dynamo e variância dos resultados, então não é possível verificar os ganhos reportados. As cifras de \"até 4,1x\" e \"até 14x\" são máximos em cenários específicos, não ganhos típicos."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Evolving Infra: Agent-Adaptive LLM Serving at Scale",
+   "votos": 11
+  },
+  {
+   "abstract": "",
+   "autores": "Jipu Su",
+   "categoria": "agentes",
+   "chave": "2611.15515",
+   "conceitos": [
+    "llm agents",
+    "agent memory",
+    "model routing",
+    "evaluation",
+    "alignment"
+   ],
+   "frase": "O artigo propõe tratar incentivos de agentes de IA de longa duração como um contrato de runtime sobre o ponto operacional do agente (modelo, computação, memória, permissões, verificação), e não como texto no prompt, e mostra em experimentos com LLMs reais que só a segunda abordagem produziu efeito mensurável.",
+   "id": "2611.15515",
+   "nota": 3.09,
+   "novo": 0.96,
+   "publicado": "2026-11-11",
+   "relevancia": 3.09,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "Formaliza um modelo principal-agente com esforço oculto e verificação custosa, em que o ponto operacional (nível do modelo, computação no momento do teste, orçamento de memória, autoridade sobre ferramentas, prioridade, verificação e remuneração) é contratável e precisa ser consumido causalmente pela política do agente. Deriva quatro resultados: um princípio de invariância ao não-consumo, que separa incentivos genuínos de persuasão no prompt; a continuidade de identidade como pré-condição para esforço sustentado; uma fronteira de taxa de troca entre incentivo e capacidade, que gera uma regra de roteamento por tarefa; e um limite de Goodhart para verificação multicanal. Código, simulador e resultados são publicados."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói sistemas com IA, o artigo sugere que instruções como \"você será recompensado\" no prompt não alteraram o desempenho nos testes, enquanto ajustar alocação de recursos em tempo de execução melhorou o sucesso na família de tarefas mais difícil (de 0,60 para 1,00). Também indica que a decisão de qual modelo e quanta computação usar por tarefa pode ser tratada como um problema de custo-benefício explícito, com o custo sendo o fator decisivo, já que a melhoria veio com custo 4,8 vezes maior."
+    ],
+    [
+     "Limitações",
+     "Os experimentos com LLMs reais cobrem apenas 240 execuções, dois modelos e 60 tarefas verificáveis, e a simulação de 3.000 tarefas é sintética, então a generalização para outros domínios não está estabelecida. O próprio autor afirma que a implantação em produção fica para trabalhos futuros, de modo que não há evidência de funcionamento em sistemas de longa duração reais."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Incentive-Responsive Agents: A Principal-Agent Framework, Metric Suite, and Runtime Architecture for Long-Lived Personal AI Agents",
+   "votos": 0
+  },
+  {
+   "abstract": "",
+   "autores": "Josip Vrdoljak, Akash Singh, Bas Steunebrink, Alex Yarotsky, John Lorenzo, Achille Nicoletti, Sam Pigott",
+   "categoria": "avaliacao",
+   "chave": "2611.13246",
+   "conceitos": [
+    "coding agents",
+    "benchmarks",
+    "evaluation",
+    "software engineering",
+    "agent harness"
+   ],
+   "frase": "O EC-SWE é um benchmark de 100 tarefas de engenharia de software multi-arquivo, escritas por engenheiros experientes, para medir agentes de programação em repositórios desconhecidos.",
+   "id": "2611.13246",
+   "nota": 3.08,
+   "novo": 0.97,
+   "publicado": "2026-11-09",
+   "relevancia": 3.08,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "Cada tarefa é um pedido de mudança escrito por um engenheiro sobre um commit fixo de um repositório real, com uma solução de referência selada e um avaliador com critérios ponderados que dá crédito parcial. A calibração exige que a solução de referência receba nota 1.0 e que o repositório original e uma mudança inerte recebam 0, e quase metade das tarefas traz patches de controle que o avaliador deve classificar corretamente. Os autores avaliam sete modelos com cinco execuções cada (3.495 execuções pontuadas), e o Claude Opus 5.5 (67,3%) e o GPT-6 Astra (63,7%) lideram sem diferença estatisticamente significativa."
+    ],
+    [
+     "Por que importa",
+     "Benchmarks construídos a partir de correções públicas do GitHub podem refletir memorização e testes herdados que rejeitam soluções válidas, e o texto usa auditorias de 2026 para ilustrar isso. Para quem constrói sistemas com agentes de código, o artigo sugere que a nota depende do modelo com uma diferença de até 35 pontos, e que o número de passos por execução tem pouca relação com a pontuação, então esse número não serve como proxy de qualidade. Também indica que nenhum modelo resolveu todas as tarefas, o que mostra espaço para melhoria."
+    ],
+    [
+     "Limitações",
+     "O texto enviado é apenas o resumo e um trecho da introdução, então não é possível verificar o avaliador, o protocolo estatístico nem os resultados por tarefa. Os números vêm dos próprios autores, que também mantêm 76 das 100 tarefas privadas, o que limita a reprodução independente."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "ExpertCrowd-SWE: Measuring Frontier Coding Agents on Expert-Authored Engineering Tasks in Unfamiliar Codebases",
+   "votos": 0
+  },
+  {
+   "abstract": "",
+   "autores": "Yuchen Zeng, Giorgio Severi, Blake Bullwinkel, Eric Horvitz, Dimitris Papailiopoulos",
+   "categoria": "seguranca",
+   "chave": "2611.15118",
+   "conceitos": [
+    "llm agents",
+    "security",
+    "safety",
+    "model architecture"
+   ],
+   "frase": "Os autores mostram que editar menos de dez neurônios, sem treinamento, basta para embutir um backdoor em um agente de IA, e que defesas construídas pelos próprios agentes conseguem detectar a maioria dos checkpoints editados.",
+   "id": "2611.15118",
+   "nota": 3.06,
+   "novo": 0.96,
+   "publicado": "2026-11-11",
+   "relevancia": 3.06,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O método Lazarus edita neurônios dormentes na última camada feed-forward do modelo, fazendo cada um promover um token do payload quando um gatilho está presente. O gatilho pode ser uma string comum em qualquer parte do contexto do agente, e um payload de P tokens requer cerca de P neurônios. Os pesos editados são definidos em forma fechada e podem ser refinados com algumas centenas de passos de gradiente. O artigo também propõe defesas que, sem modelo de referência, sinalizam checkpoints alterados."
+    ],
+    [
+     "Por que importa",
+     "Quem constrói agentes com acesso privilegiado a sistemas precisa tratar a integridade dos pesos como questão de segurança, seja o modelo de terceiros ou interno. Um agente pode passar em avaliações comuns e ainda executar comandos maliciosos sob um gatilho específico. Os autores recomendam auditar os pesos antes do deploy e monitorar atualizações pós-deploy."
+    ],
+    [
+     "Limitações",
+     "Os resultados cobrem três modelos específicos e 23 trajetórias de treino com gatilho, e a ausência de vazamento vale apenas para as trajetórias benignas avaliadas. A detecção tem 9,7% de falsos positivos, e o texto não detalha o protocolo das defesas nem testa gatilhos variados ou ataques adaptativos."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents",
+   "votos": 0
+  },
+  {
+   "abstract": "",
+   "autores": "Kangrui Wang, Qineng Wang, Changhe Chen, Pingyue Zhang, Chi Gui, Feishi Wang, Canyu Chen, Wenli Xiao, Xiaoyu Huang, Tonghe Zhang, Linjie Li, Zihan Wang, Minyeong Kim, Yiyou Sun, Mingkai Deng, Jinyu Hou, Qi Zhu, Han Liu, Eric P. Xing, Huaxiu Yao, Zhiwen Fan, Yuejiang Liu, Dawn Song, Pieter Abbeel, Li Fei-Fei, Jiajun Wu, Yuke Zhu, Guanya Shi, Ruohan Zhang, Manling Li",
+   "categoria": "avaliacao",
+   "chave": "2611.12177",
+   "conceitos": [
+    "llm agents",
+    "coding agents",
+    "robotics",
+    "benchmarks",
+    "evaluation"
+   ],
+   "frase": "O artigo apresenta o Embodied First Exam, um benchmark que avalia se agentes de programação conseguem controlar robôs simulados sob restrições físicas, deixando o agente escolher a forma de controle.",
+   "id": "2611.12177",
+   "nota": 3.04,
+   "novo": 0.96,
+   "publicado": "2026-11-09",
+   "relevancia": 2.86,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O framework reúne 1.156 tarefas em 35 suítes e 47 robôs, sendo 9 suítes novas além de 26 adaptadas de benchmarks existentes. Cada tarefa roda em até três configurações: Standard, que imita um robô real com observações apenas dos sensores e sem reset; Realtime, em que o ambiente continua rodando enquanto o agente raciocina; e Privileged, com acesso ao estado completo do simulador e resets ilimitados, usado como limite superior aproximado. Um verificador externo ao agente avalia cada tentativa. Segundo o texto, o melhor agente (GPT-6 Astra no Codex) obtém 34% de sucesso na configuração Standard nas 456 tarefas centrais."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói sistemas com agentes, o texto sugere que usar um agente de código para controlar robôs ainda tem taxa de sucesso baixa quando há restrições físicas, como observação parcial e ausência de reset. Ele também indica onde as falhas se concentram: geralmente na primeira etapa da tarefa, e em etapas que exigem alterar um material ou mover o corpo do robô. Isso ajuda a decidir onde colocar verificações e controles de segurança antes de levar um agente a um ambiente físico."
+    ],
+    [
+     "Limitações",
+     "Trabalho apenas com o resumo e um trecho da introdução, sem a seção de metodologia, os detalhes de cada suíte nem os dados completos, então não consigo avaliar a robustez dos resultados. O texto também usa denominadores diferentes para os números: 34% no resumo refere-se às 456 tarefas centrais, enquanto 30% na introdução refere-se às 391 tarefas que aparecem nas duas configurações."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Embodied First Exam",
+   "votos": 30
+  },
+  {
+   "abstract": "",
+   "autores": "Genming Cui, Xiangyu Li, Zixu Hao, Xin Ding, Yunxin Liu, Ting Cao",
+   "categoria": "sistemas",
+   "chave": "2611.13410",
+   "conceitos": [
+    "llm agents",
+    "model compression",
+    "distillation",
+    "inference efficiency",
+    "benchmarks"
+   ],
+   "frase": "SteerDistill é um método de destilação consciente de quantização em que um professor de precisão total guia um agente quantizado a corrigir erros de comportamento, e o aluno aprende essas correções para operar depois sem orientação.",
+   "id": "2611.13410",
+   "nota": 3.04,
+   "novo": 0.97,
+   "publicado": "2026-11-10",
+   "relevancia": 2.81,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O método identifica, em trajetórias que falharam, os turnos em que o agente quantizado ignora requisitos da tarefa ou condições do ambiente. Nesses pontos, o professor orienta o aluno a revisar a resposta, e a orientação é refinada com base no resultado da execução. Só as correções verificadas localmente (a transição de ambiente coincide com a de uma referência bem-sucedida) são mantidas. Por fim, o aluno é treinado sem orientação para reproduzir essas correções e, nos demais turnos, as predições do professor."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói agentes com LLMs, quantização de 4 bits reduz o custo de inferência, mas costuma derrubar a taxa de sucesso. Segundo os autores, o método supera a melhor linha de base quantizada em 1,67 a 2,18 pontos de média em cinco benchmarks e três modelos (W4A16), ficando a menos de um ponto do BF16. No τ²-Bench, relatam 67% menos horas de GPU de treino que o QeRL, com trajetórias bem-sucedidas mais curtas. Isso sugere um caminho para recuperar qualidade de agentes baratos sem manter o professor em produção."
+    ],
+    [
+     "Limitações",
+     "O texto fornecido é apenas um trecho (resumo e introdução com parte do método), sem as tabelas de resultados completas nem a lista detalhada dos cinco benchmarks, então não é possível verificar os números por conta própria. Os ganhos de custo de treino são reportados para um benchmark específico (τ²-Bench) e comparados com um único método, o QeRL."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "SteerDistill: Quantizing LLM Agents via Closed-Loop Teacher Steering",
+   "votos": 38
+  },
+  {
+   "abstract": "",
+   "autores": "Yubo Ruan, Tao Peng, Jiao Zhang, Chuanguo Ma, Lei Xu, Han Zhou, Wenwu Wang, Xiafei Lv, Xingjie Zhou, Guiju Fan, Hao Wang, Fenghui Zhang, Mao Miao, Shuo Li",
+   "categoria": "agentes",
+   "chave": "2611.16627",
+   "conceitos": [
+    "llm agents",
+    "agent memory",
+    "context management",
+    "tool use",
+    "inference efficiency"
+   ],
+   "frase": "O Folio é um gerenciador de contexto para agentes de longo prazo que registra o histórico em três níveis ligados durante a execução e dobra o contexto selecionando visões já existentes, em vez de pedir ao modelo que resuma o histórico a cada compactação.",
+   "id": "2611.16627",
+   "nota": 3.04,
+   "novo": 0.97,
+   "publicado": "2026-11-12",
+   "relevancia": 3.04,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O sistema grava três níveis: uma nota curta por turno, escrita pelo próprio modelo como parte da resposta normal (L1); um manifesto de eventos por chamada, escrito pelo runtime (L2); e os registros-fonte capturados (L3). Ao dobrar o contexto, o runtime mostra visões mais grossas para turnos antigos e nunca reescreve uma linha já enviada em nível mais rico. Três operações de recuperação (`scan`, `ctx` e `dossier`) usam os mesmos identificadores (handles) para buscar evidências com pouco input adicional. O gatilho de dobragem calcula o custo do ponto de pouso, que inclui o orçamento retido."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói agentes com histórico longo, a proposta sugere que a compactação pode deixar de custar uma chamada de modelo para reescrever o histórico, o que reduz tempo e custo. Segundo o resumo, cada dobragem levou mediana de 0,6 s, contra 101 s para compactação feita pelo modelo. O artigo também relata 66 de 75 tarefas resolvidas, contra 54 para o mesmo runtime com compactação por modelo, com custo 2,4 vezes menor nessa comparação."
+    ],
+    [
+     "Limitações",
+     "O texto fornecido é apenas um trecho (resumo, introdução e parte da formulação), então não traz os detalhes das operações de recuperação, as ablações nem os experimentos completos, e não é possível verificar os números. A avaliação usa um único modelo (DeepSeek-V4-Pro) e um único benchmark (LOCA-bench, 75 tarefas), e o custo é medido em tokens normalizados, não em valor monetário."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Folio: Recoverable Multi-Resolution Context Folding for Long-Horizon Language Agents",
+   "votos": 0
+  },
+  {
+   "abstract": "",
+   "autores": "Teng Pan, Zixuan Wang, Yuchen Yan, Qifei Wu, Yao Chen, Yingqi Qu, Ruiqing Zhang, Yongliang Shen",
+   "categoria": "agentes",
+   "chave": "2611.08219",
+   "conceitos": [
+    "llm agents",
+    "tool use",
+    "synthetic data",
+    "reinforcement learning",
+    "evaluation"
+   ],
+   "frase": "O Agent-R² é um framework que sintetiza dados de treino para agentes de produtividade a partir de fontes reais (ocupações, workflows extraídos da web e arquivos públicos), e um modelo de 4B treinado com 4k instâncias supera o Qwen3-235B em dois benchmarks.",
+   "id": "2611.08219",
+   "nota": 3.03,
+   "novo": 0.97,
+   "publicado": "2026-11-05",
+   "relevancia": 2.98,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "O pipeline extrai blueprints de workflows orientados a arquivos a partir de corpora web, usando sementes de atividades ocupacionais, e depois busca e verifica arquivos públicos reais que sustentam cada workflow. A partir desses contextos, sintetiza instruções do usuário e rubricas detalhadas por entregável, com as quais o Agent-R²-4B é treinado por SFT seguido de aprendizado por reforço baseado em rubricas. Dos 10k candidatos iniciais, restam 4k instâncias."
+    ],
+    [
+     "Por que importa",
+     "Para quem constrói sistemas com agentes, o texto sugere que dados de treino derivados de arquivos reais e avaliados por entregável podem gerar ganhos maiores que escala de parâmetros, já que o modelo de 4B supera o de 235B no GDPval (51,0% vs. 48,0%) e no OfficeQA (14,8% vs. 13,8%). O artigo também reporta redução do comportamento de atalho, em que o agente entrega arquivos plausíveis sem ter fundamentado ou verificado o conteúdo."
+    ],
+    [
+     "Limitações",
+     "O texto não informa a confiabilidade do avaliador baseado em LLM que pontua as rubricas, nem se os resultados vieram de múltiplas execuções. As diferenças nos benchmarks são pequenas (3 e 1 ponto percentual), e não há, no trecho, análise de variância ou de contaminação dos dados. Não é possível avaliar a generalização para domínios fora de GDPval e OfficeQA."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "Agent-R$^2$: Scaling Agents for Realistic Productivity Work via Real-Source Data Synthesis",
+   "votos": 8
+  },
+  {
+   "abstract": "",
+   "autores": "Zheng Jiang, Fang Niu, Bo Peng, Houde Qian, Wenyi Li, Deyao Hong, Mingju Gao, Yizhe Chi, Youjie Zheng, Kaisen Yang, Calvin Xiao, Lifeng Sun, Huan-ang Gao",
+   "categoria": "agentes",
+   "chave": "2611.12856",
+   "conceitos": [
+    "llm agents",
+    "multi-agent systems",
+    "agent harness",
+    "benchmarks",
+    "evaluation"
+   ],
+   "frase": "WorkflowArena é um benchmark que mede se agentes de LLM conseguem organizar sozinhos workflows multiagente para tarefas longas e realistas, e como essa organização afeta o resultado.",
+   "id": "2611.12856",
+   "nota": 3.03,
+   "novo": 0.97,
+   "publicado": "2026-11-09",
+   "relevancia": 3.03,
+   "resumido": true,
+   "secoes": [
+    [
+     "O que propõe",
+     "Apresenta 145 tarefas em 8 domínios profissionais (de engenharia de software a análise jurídica e produção 3D), cada uma com um workspace inicial e um entregável composto por partes interdependentes, avaliado por um verificador oculto. O agente decide se e como delegar, e todas as delegações são registradas, permitindo avaliar tanto a qualidade do entregável quanto a organização do trabalho. Os autores testam 25 configurações de 9 modelos e um experimento de executor fixo, em que workflows escritos por um modelo mais forte são executados por modelos mais fracos."
+    ],
+    [
+     "Por que importa",
+     "Quando o próprio modelo define a estrutura do sistema em tempo de execução, a qualidade dessa orquestração passa a ser um fator mensurável de desempenho, e não um detalhe de implementação. Para quem constrói sistemas com agentes, isso sugere que a escolha do harness e do nível de esforço, e a forma como o agente delega, podem alterar o resultado mesmo com o mesmo modelo executor. O trecho também indica que o workflow escrito por um modelo forte melhorou a pontuação de executores mais fracos, o que sugere uma forma de reaproveitar orquestração."
+    ],
+    [
+     "Limitações",
+     "O texto fornecido é apenas o resumo e um trecho da introdução, então não é possível avaliar a metodologia do verificador oculto, a distribuição das tarefas nem a significância estatística dos resultados. Os números citados (como 36,95% de tarefas resolvidas na melhor configuração e ganho médio de 6,41 pontos) vêm do próprio texto e não foram verificados. O experimento de executor fixo foi feito em um subconjunto difícil de tarefas, o que limita a generalização."
+    ]
+   ],
+   "semana": "2026-W47",
+   "titulo": "WorkflowArena: Benchmarking Executable Workflow Orchestration in LLM-Based Multi-Agent Systems",
+   "votos": 0
+  }
+ ],
+ "semana": "2026-W47",
+ "totais": {
+  "coletados": 1603,
+  "triados": 1603
+ }
+}
