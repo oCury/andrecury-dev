@@ -68,3 +68,45 @@ describe('listarProjetos', () => {
     expect(() => listarProjetos(pasta, false)).toThrow(/a\.mdx[\s\S]*link/)
   })
 })
+
+const IMAGEM = 'imagem:\n  arquivo: agendahora\n  alt: Agenda com consultas do dia\n  largura: 1600\n  altura: 1000'
+
+describe('esquema de projeto em destaque', () => {
+  it('aceita destaque com imagem e resultado', () => {
+    const pasta = pastaCom({ 'a.mdx': projeto(`titulo: A\ndestaque: true\nresultado: 170 rotas\n${IMAGEM}`) })
+    const [a] = listarProjetos(pasta, false)
+    expect(a.destaque).toBe(true)
+    expect(a.imagem).toEqual({ arquivo: 'agendahora', alt: 'Agenda com consultas do dia', largura: 1600, altura: 1000 })
+    expect(a.resultado).toBe('170 rotas')
+  })
+
+  it('projeto comum não é destaque e dispensa imagem e resultado', () => {
+    const pasta = pastaCom({ 'a.mdx': projeto('titulo: A') })
+    const [a] = listarProjetos(pasta, false)
+    expect(a.destaque).toBe(false)
+    expect(a.imagem).toBeUndefined()
+    expect(a.resultado).toBeUndefined()
+  })
+
+  it('recusa destaque sem imagem, citando o arquivo e o campo', () => {
+    const pasta = pastaCom({ 'a.mdx': projeto('titulo: A\ndestaque: true\nresultado: x') })
+    expect(() => listarProjetos(pasta, false)).toThrow(/a\.mdx[\s\S]*imagem/)
+  })
+
+  it('recusa destaque sem resultado, citando o arquivo e o campo', () => {
+    const pasta = pastaCom({ 'a.mdx': projeto(`titulo: A\ndestaque: true\n${IMAGEM}`) })
+    expect(() => listarProjetos(pasta, false)).toThrow(/a\.mdx[\s\S]*resultado/)
+  })
+
+  it('recusa nome de arquivo de imagem com caminho ou extensão', () => {
+    const ruim = 'imagem:\n  arquivo: ../x.png\n  alt: t\n  largura: 1600\n  altura: 1000'
+    const pasta = pastaCom({ 'a.mdx': projeto(`titulo: A\ndestaque: true\nresultado: x\n${ruim}`) })
+    expect(() => listarProjetos(pasta, false)).toThrow(/imagem\.arquivo/)
+  })
+
+  it('recusa dimensão que não seja inteiro positivo', () => {
+    const ruim = 'imagem:\n  arquivo: x\n  alt: t\n  largura: 0\n  altura: 1000'
+    const pasta = pastaCom({ 'a.mdx': projeto(`titulo: A\ndestaque: true\nresultado: x\n${ruim}`) })
+    expect(() => listarProjetos(pasta, false)).toThrow(/imagem\.largura/)
+  })
+})
