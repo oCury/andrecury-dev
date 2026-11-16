@@ -42,3 +42,11 @@ export function listarProjetos(pasta = PASTA_PROJETOS, comRascunhos = rascunhosV
     .filter((projeto) => comRascunhos || !projeto.rascunho)
     .sort((a, b) => a.ordem - b.ordem || b.ano - a.ano || a.slug.localeCompare(b.slug))
 }
+
+export function listarDestaques(pasta = PASTA_PROJETOS, comRascunhos = rascunhosVisiveis()): Projeto[] {
+  return listarProjetos(pasta, comRascunhos).filter((projeto) => projeto.destaque)
+}
+
+export function listarOutrosProjetos(pasta = PASTA_PROJETOS, comRascunhos = rascunhosVisiveis()): Projeto[] {
+  return listarProjetos(pasta, comRascunhos).filter((projeto) => !projeto.destaque)
+}

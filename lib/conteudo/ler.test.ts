@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { listarPosts, listarProjetos } from './ler'
+import { listarDestaques, listarOutrosProjetos, listarPosts, listarProjetos } from './ler'
 
 function pastaCom(arquivos: Record<string, string>): string {
   const pasta = fs.mkdtempSync(path.join(os.tmpdir(), 'conteudo-'))
@@ -108,5 +108,32 @@ describe('esquema de projeto em destaque', () => {
     const ruim = 'imagem:\n  arquivo: x\n  alt: t\n  largura: 0\n  altura: 1000'
     const pasta = pastaCom({ 'a.mdx': projeto(`titulo: A\ndestaque: true\nresultado: x\n${ruim}`) })
     expect(() => listarProjetos(pasta, false)).toThrow(/imagem\.largura/)
+  })
+})
+
+describe('listarDestaques e listarOutrosProjetos', () => {
+  const comImagem = (arquivo: string) =>
+    `imagem:\n  arquivo: ${arquivo}\n  alt: Tela do projeto\n  largura: 1600\n  altura: 1000`
+  const pasta = () =>
+    pastaCom({
+      'b.mdx': projeto(`titulo: B\nordem: 20\ndestaque: true\nresultado: x\n${comImagem('b')}`),
+      'a.mdx': projeto(`titulo: A\nordem: 10\ndestaque: true\nresultado: x\n${comImagem('a')}`),
+      'c.mdx': projeto('titulo: C\nordem: 5'),
+    })
+
+  it('devolve só os destaques, na ordem', () => {
+    expect(listarDestaques(pasta(), false).map((p) => p.slug)).toEqual(['a', 'b'])
+  })
+
+  it('devolve só os outros, sem repetir destaque', () => {
+    expect(listarOutrosProjetos(pasta(), false).map((p) => p.slug)).toEqual(['c'])
+  })
+
+  it('esconde destaque em rascunho, a não ser que seja pedido', () => {
+    const p = pastaCom({
+      'a.mdx': projeto(`titulo: A\ndestaque: true\nresultado: x\nrascunho: true\n${comImagem('a')}`),
+    })
+    expect(listarDestaques(p, false)).toEqual([])
+    expect(listarDestaques(p, true)).toHaveLength(1)
   })
 })
