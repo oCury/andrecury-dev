@@ -97,6 +97,8 @@ test('nenhuma página rola de lado em 320, 768, 1024 e 1440', async ({ page, req
 
 test('acessibilidade: sem violação WCAG A e AA, no tema claro e no escuro', async ({ page, request, browserName }) => {
   test.skip(browserName !== 'chromium', 'o axe roda uma vez; os outros navegadores cobrem comportamento')
+  // um único teste percorre o sitemap inteiro nos dois temas: o limite padrão de 30 s não comporta as páginas novas
+  test.setTimeout(120_000)
   const caminhos = await caminhosDoSitemap(request)
   for (const tema of ['light', 'dark'] as const) {
     await page.emulateMedia({ colorScheme: tema })
