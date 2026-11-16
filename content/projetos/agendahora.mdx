@@ -1,0 +1,26 @@
+---
+titulo: AgendaHora
+resumo: "ERP para clínicas de oftalmologia, em uso numa clínica de verdade: agenda, fluxo do paciente, atendimento, estoque e faturamento."
+ano: 2026
+estado: em uso
+stack: [Next.js, TypeScript, Prisma, PostgreSQL]
+ordem: 10
+destaque: true
+resultado: "257 de 312 rotas de API com controle de acesso por clínica, 23 migrações versionadas e 247 arquivos de teste automatizado (medido em 16 de novembro de 2026)."
+imagem:
+  arquivo: agendahora
+  alt: "Agenda do dia da AgendaHora, com menu lateral de módulos, resumo de duas consultas e dois cartões de agendamento com dados fictícios."
+  largura: 1600
+  altura: 1000
+---
+
+Uma clínica de oftalmologia precisava de um sistema só para agenda, recepção, atendimento, estoque e faturamento.
+
+## O que foi feito
+
+- Agenda por médico, recepção com chamada de pacientes por senha (totem e painel de TV) e prontuário.
+- Faturamento SUS (BPA e APAC) e emissão de NFS-e de forma idempotente.
+- Estoque com importação de NF-e e custo de material por procedimento.
+- Cada rota de API passa pela verificação de acesso por clínica; backup diário cifrado com ensaio de restauração.
+
+As imagens desta página usam dados fictícios.
