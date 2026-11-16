@@ -1,5 +1,6 @@
 import { FaixaDeProjeto } from '@/components/conteudo/FaixaDeProjeto'
 import { IndiceDeProjetos } from '@/components/conteudo/IndiceDeProjetos'
+import { Bancada } from '@/components/site/Bancada'
 import { listarDestaques, listarOutrosProjetos } from '@/lib/conteudo/ler'
 import { metadados } from '@/lib/metadados'
 
@@ -12,6 +13,7 @@ export default function PaginaProjetos() {
   return (
     <>
       <header className="capa">
+        <Bancada />
         <p className="capa-rotulo">Portfólio</p>
         <h1 className="capa-titulo">Projetos</h1>
       </header>

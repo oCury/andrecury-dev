@@ -1,0 +1,17 @@
+/* Bancada: fundo fotográfico da capa de /projetos. O texto da capa fica à esquerda, sobre um véu da cor do papel;
+   a bancada, a luminária e o caderno ficam à direita, sem cobertura. Só tokens de tema: papel, margem. */
+.bancada { position: absolute; inset: 0; z-index: -1; overflow: hidden; overflow: clip; pointer-events: none; }
+.bancada picture { display: contents; }
+.bancada-foto { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 58%; }
+.bancada-veu {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, var(--papel) 0, var(--papel) calc(var(--margem) + 24rem), color-mix(in oklch, var(--papel) 70%, transparent) calc(var(--margem) + 31rem), transparent calc(var(--margem) + 44rem)),
+    linear-gradient(0deg, var(--papel) 0%, transparent 14%);
+}
+
+/* Tela estreita: a foto cobre pela altura, mostrando a luminária e o caderno; o véu sobe de baixo, onde fica o título. */
+@media (max-width: 1000px) {
+  .bancada-foto { object-position: 76% 50%; }
+  .bancada-veu { background: linear-gradient(0deg, var(--papel) 0%, var(--papel) 27%, color-mix(in oklch, var(--papel) 72%, transparent) 40%, transparent 62%); }
+}

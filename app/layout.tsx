@@ -8,6 +8,7 @@ import '@/styles/tokens.css'
 import '@/styles/base.css'
 import '@/styles/site.css'
 import '@/styles/projetos.css'
+import '@/styles/bancada.css'
 
 const sans = Inter({ subsets: ['latin'], display: 'swap', variable: '--fonte-sans' })
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], display: 'swap', variable: '--fonte-mono' })
